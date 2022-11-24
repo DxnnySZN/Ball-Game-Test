@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnBall", 1f, 2f);
+        InvokeRepeating("SpawnBall", 1f, 0.025f);
         // 1f represents the amount of seconds you wait until the function starts
         // 2f represents the amount of seconds you wait until the function keeps on repeating
     }
@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             Vector3 mousePos = Input.mousePosition;
             // mousePos is now represented as the position where the mouse cursor is at
-            mousePos.z = 10f;
+            mousePos.z = 5f;
             // the higher the number, the farther the balls will spawn from the plane
             Vector3 spawnPos = Camera.main.ScreenToWorldPoint(mousePos);
             // this will allow the ball to spawn wherever the mouse cursor is due to the conversion of the mousePos to the WorldPoint
@@ -50,8 +50,8 @@ public class GameController : MonoBehaviour
         float randomZ = Random.Range(-maxZ, maxZ);
         // this creates a random range between the minimum of the Z-Axis and the maximum of the Z-Axis
 
-        Vector3 randomSpawnPos = new Vector3(randomX, 10f, randomZ);
-        // this sets the random spawn position at the random range of the X-Axis, the value of 10 for the Y-Axis, and the random range of the Z-Axis
+        Vector3 randomSpawnPos = new Vector3(randomX, 5f, randomZ);
+        // this sets the random spawn position at the random range of the X-Axis, the value of 5 for the Y-Axis, and the random range of the Z-Axis
         Instantiate(ball, randomSpawnPos, Quaternion.identity);
 
         // Instantiate(ball, spawnPoint.position, Quaternion.identity);
